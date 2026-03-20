@@ -4,9 +4,9 @@
  * (c) 2026 Nikola Popovic / ponITech (ponitech.pro)
  * Released under the MIT License
  */
-"use strict";
+'use strict';
 
-Object.defineProperty(exports, "__esModule", { value: true });
+Object.defineProperty(exports, '__esModule', { value: true });
 
 /**
  * canvas-captcha

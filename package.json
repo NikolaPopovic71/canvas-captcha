@@ -1,5 +1,5 @@
 {
-  "name": "canvas-captcha",
+  "name": "@ponitech/canvas-captcha",
   "version": "1.0.0",
   "description": "Lightweight, zero-dependency canvas-based CAPTCHA widget for the browser.",
   "main": "dist/canvas-captcha.cjs.js",
