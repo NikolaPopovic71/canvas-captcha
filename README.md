@@ -4,9 +4,9 @@
 
 No server needed. No third-party APIs. The CAPTCHA value is **never exposed in the DOM** — it lives only inside the Canvas, making it resistant to simple scraping.
 
-[![npm version](https://img.shields.io/npm/v/canvas-captcha.svg)](https://www.npmjs.com/package/canvas-captcha)
-[![license](https://img.shields.io/npm/l/canvas-captcha.svg)](LICENSE)
-[![bundle size](https://img.shields.io/bundlephobia/minzip/canvas-captcha)](https://bundlephobia.com/package/canvas-captcha)
+[![npm version](https://img.shields.io/npm/v/@ponitech/canvas-captcha.svg)](https://www.npmjs.com/package/@ponitech/canvas-captcha)
+[![license](https://img.shields.io/npm/l/@ponitech/canvas-captcha.svg)](LICENSE)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/@ponitech/canvas-captcha)](https://bundlephobia.com/package/@ponitech/canvas-captcha)
 
 ---
 
@@ -24,7 +24,7 @@ No server needed. No third-party APIs. The CAPTCHA value is **never exposed in t
 ## Installation
 
 ```bash
-npm install canvas-captcha
+npm install @ponitech/canvas-captcha
 ```
 
 ---
@@ -39,7 +39,7 @@ npm install canvas-captcha
 <button onclick="check()">Verify</button>
 <button onclick="captcha.refresh()">Refresh</button>
 
-<script src="https://unpkg.com/canvas-captcha/dist/canvas-captcha.umd.min.js"></script>
+<script src="https://unpkg.com/@ponitech/canvas-captcha/dist/canvas-captcha.umd.min.js"></script>
 <script>
   const { CaptchaCanvas } = CanvasCaptcha;
   const captcha = new CaptchaCanvas('#my-captcha');
@@ -59,7 +59,7 @@ npm install canvas-captcha
 ### ESM (Vite, Webpack, Rollup)
 
 ```js
-import CaptchaCanvas from 'canvas-captcha';
+import CaptchaCanvas from '@ponitech/canvas-captcha';
 
 const captcha = new CaptchaCanvas('#my-captcha');
 
@@ -76,7 +76,7 @@ submitBtn.addEventListener('click', () => {
 ### CommonJS (Node.js / older bundlers)
 
 ```js
-const { CaptchaCanvas } = require('canvas-captcha');
+const { CaptchaCanvas } = require('@ponitech/canvas-captcha');
 const captcha = new CaptchaCanvas('#my-captcha');
 ```
 
@@ -140,4 +140,4 @@ Any browser that supports the HTML5 `<canvas>` API (all modern browsers, IE11 wi
 
 ## License
 
-MIT © [Nikola Popovic](https://ponitech.pro)
+MIT © [ponITech](https://ponitech.pro)
