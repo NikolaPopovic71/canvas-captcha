@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>canvas-captcha — Demo</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: #f5f4f0;
+        margin: 0;
+      }
+      .card {
+        background: #fff;
+        padding: 36px 32px;
+        border-radius: 16px;
+        box-shadow: 0 4px 32px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        width: 280px;
+      }
+      h2 {
+        margin: 0;
+        font-size: 1.2rem;
+      }
+      .row {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      canvas {
+        border-radius: 8px;
+        border: 1px solid #ddd;
+      }
+      button.refresh {
+        background: none;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 6px 10px;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+      input {
+        border: 1.5px solid #ddd;
+        border-radius: 8px;
+        padding: 9px 12px;
+        font-size: 0.9rem;
+        width: 100%;
+        box-sizing: border-box;
+        outline: none;
+      }
+      input:focus {
+        border-color: #e8a020;
+      }
+      button.verify {
+        background: #e8a020;
+        border: none;
+        border-radius: 8px;
+        padding: 11px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        width: 100%;
+      }
+      .msg {
+        font-size: 0.82rem;
+        min-height: 18px;
+      }
+      .msg.ok {
+        color: #1a9e6c;
+      }
+      .msg.err {
+        color: #d94040;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h2>canvas-captcha demo</h2>
+      <div class="row">
+        <canvas id="captcha"></canvas>
+        <button class="refresh" id="refreshBtn" title="New CAPTCHA">🔄</button>
+      </div>
+      <input
+        type="text"
+        id="captchaInput"
+        placeholder="Type the characters"
+        maxlength="8"
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button class="verify" id="verifyBtn">Verify</button>
+      <p class="msg" id="msg"></p>
+    </div>
+
+    <!-- Load from local dist for demo; in production use unpkg CDN -->
+    <script src="../dist/canvas-captcha.umd.min.js"></script>
+    <script>
+      const captcha = new CaptchaCanvas.CaptchaCanvas("#captcha");
+      const input = document.getElementById("captchaInput");
+      const msg = document.getElementById("msg");
+
+      document.getElementById("refreshBtn").onclick = () => {
+        captcha.refresh();
+        input.value = "";
+        msg.textContent = "";
+        msg.className = "msg";
+      };
+
+      document.getElementById("verifyBtn").onclick = () => {
+        if (!input.value) {
+          msg.textContent = "Please type the characters above.";
+          msg.className = "msg err";
+          return;
+        }
+        if (captcha.verify(input.value)) {
+          msg.textContent = "✅ Correct! You are human.";
+          msg.className = "msg ok";
+        } else {
+          msg.textContent = "❌ Incorrect — try again.";
+          msg.className = "msg err";
+          captcha.refresh();
+          input.value = "";
+        }
+      };
+
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") document.getElementById("verifyBtn").click();
+      });
+    </script>
+  </body>
+</html>

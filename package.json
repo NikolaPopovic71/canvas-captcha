@@ -1,0 +1,47 @@
+{
+  "name": "canvas-captcha",
+  "version": "1.0.0",
+  "description": "Lightweight, zero-dependency canvas-based CAPTCHA widget for the browser.",
+  "main": "dist/canvas-captcha.cjs.js",
+  "module": "dist/canvas-captcha.esm.js",
+  "browser": "dist/canvas-captcha.umd.min.js",
+  "exports": {
+    ".": {
+      "import": "./dist/canvas-captcha.esm.js",
+      "require": "./dist/canvas-captcha.cjs.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "captcha",
+    "canvas",
+    "security",
+    "verification",
+    "bot-protection",
+    "vanilla-js",
+    "zero-dependency"
+  ],
+  "author": "Nikola Popovic <hello@ponitech.pro> (https://ponitech.pro)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NikolaPopovic71/canvas-captcha.git"
+  },
+  "homepage": "https://github.com/NikolaPopovic71/canvas-captcha#readme",
+  "bugs": {
+    "url": "https://github.com/NikolaPopovic71/canvas-captcha/issues"
+  },
+  "devDependencies": {
+    "@rollup/plugin-terser": "^1.0.0",
+    "rollup": "^4.59.0"
+  },
+  "type": "module"
+}
